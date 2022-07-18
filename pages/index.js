@@ -1,5 +1,6 @@
 // pages/index.js
 import { Authenticator } from '@aws-amplify/ui-react';
+import "@aws-amplify/ui-react/styles.css";
 import { Amplify, API, Auth, withSSRContext } from 'aws-amplify';
 import Head from 'next/head';
 import awsExports from '../src/aws-exports';
