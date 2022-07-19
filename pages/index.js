@@ -57,13 +57,13 @@ export default function Home({ posts = [] }) {
         <h1 className={styles.title}>Amplify + Next.js</h1>
 
         <p className={styles.description}>
-          <code className={styles.code}>{posts.length}</code>
+          <code data-test="posts-count" className={styles.code}>{posts.length}</code>
           posts
         </p>
 
         <div className={styles.grid}>
           {posts.map((post) => (
-            <a className={styles.card} href={`/posts/${post.id}`} key={post.id}>
+            <a data-test={`post-${post.id}`} className={styles.card} href={`/posts/${post.id}`} key={post.id}>
               <h3>{post.title}</h3>
               <p>{post.content}</p>
             </a>
