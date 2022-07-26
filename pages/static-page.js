@@ -1,4 +1,4 @@
-import { Analytics } from "aws-amplify";
+import { Amplify, Analytics } from "aws-amplify";
 import { useEffect } from "react";
 import awsExports from "../src/aws-exports";
 
