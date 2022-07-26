@@ -1,10 +1,11 @@
-import { Amplify, API, withSSRContext } from 'aws-amplify';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import awsExports from '../../src/aws-exports';
-import { deletePost } from '../../src/graphql/mutations';
-import { getPost, listPosts } from '../../src/graphql/queries';
-import styles from '../../styles/Home.module.css';
+import { Amplify, Analytics, API, withSSRContext } from "aws-amplify";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import awsExports from "../../src/aws-exports";
+import { deletePost } from "../../src/graphql/mutations";
+import { getPost, listPosts } from "../../src/graphql/queries";
+import styles from "../../styles/Home.module.css";
 
 Amplify.configure({ ...awsExports, ssr: true });
 
@@ -12,12 +13,12 @@ export async function getStaticPaths() {
   const SSR = withSSRContext();
   const { data } = await SSR.API.graphql({ query: listPosts });
   const paths = data.listPosts.items.map((post) => ({
-    params: { id: post.id }
+    params: { id: post.id },
   }));
 
   return {
     fallback: true,
-    paths
+    paths,
   };
 }
 
@@ -26,19 +27,27 @@ export async function getStaticProps({ params }) {
   const { data } = await SSR.API.graphql({
     query: getPost,
     variables: {
-      id: params.id
-    }
+      id: params.id,
+    },
   });
 
   return {
     props: {
-      post: data.getPost
-    }
+      post: data.getPost,
+    },
   };
 }
 
 export default function Post({ post }) {
   const router = useRouter();
+
+  useEffect(() => {
+    const recordAnalytics = async () => {
+      await Analytics.record({ name: "viewPostPage" });
+    };
+
+    recordAnalytics().catch(console.error);
+  }, []);
 
   if (router.isFallback) {
     return (
@@ -51,14 +60,14 @@ export default function Post({ post }) {
   async function handleDelete() {
     try {
       await API.graphql({
-        authMode: 'AMAZON_COGNITO_USER_POOLS',
+        authMode: "AMAZON_COGNITO_USER_POOLS",
         query: deletePost,
         variables: {
-          input: { id: post.id }
-        }
+          input: { id: post.id },
+        },
       });
 
-      window.location.href = '/';
+      window.location.href = "/";
     } catch ({ errors }) {
       console.error(...errors);
       throw new Error(errors[0].message);

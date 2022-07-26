@@ -38,7 +38,7 @@ async function handleCreatePost(event) {
       },
     });
 
-    Analytics.record({ name: "createPost", title });
+    await Analytics.record({ name: "createPost" });
 
     window.location.href = `/posts/${data.createPost.id}`;
   } catch ({ errors }) {
