@@ -1,12 +1,12 @@
 // pages/index.js
-import { Authenticator } from '@aws-amplify/ui-react';
+import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
-import { Amplify, API, Auth, withSSRContext } from 'aws-amplify';
-import Head from 'next/head';
-import awsExports from '../src/aws-exports';
-import { createPost } from '../src/graphql/mutations';
-import { listPosts } from '../src/graphql/queries';
-import styles from '../styles/Home.module.css';
+import { Amplify, Analytics, API, Auth, withSSRContext } from "aws-amplify";
+import Head from "next/head";
+import awsExports from "../src/aws-exports";
+import { createPost } from "../src/graphql/mutations";
+import { listPosts } from "../src/graphql/queries";
+import styles from "../styles/Home.module.css";
 
 Amplify.configure({ ...awsExports, ssr: true });
 
@@ -16,8 +16,8 @@ export async function getServerSideProps({ req }) {
 
   return {
     props: {
-      posts: response.data.listPosts.items
-    }
+      posts: response.data.listPosts.items,
+    },
   };
 }
 
@@ -28,15 +28,17 @@ async function handleCreatePost(event) {
 
   try {
     const { data } = await API.graphql({
-      authMode: 'AMAZON_COGNITO_USER_POOLS',
+      authMode: "AMAZON_COGNITO_USER_POOLS",
       query: createPost,
       variables: {
         input: {
-          title: form.get('title'),
-          content: form.get('content')
-        }
-      }
+          title: form.get("title"),
+          content: form.get("content"),
+        },
+      },
     });
+
+    Analytics.record({ name: "createPost", title });
 
     window.location.href = `/posts/${data.createPost.id}`;
   } catch ({ errors }) {
@@ -57,13 +59,20 @@ export default function Home({ posts = [] }) {
         <h1 className={styles.title}>Amplify + Next.js</h1>
 
         <p className={styles.description}>
-          <code data-test="posts-count" className={styles.code}>{posts.length}</code>
+          <code data-test="posts-count" className={styles.code}>
+            {posts.length}
+          </code>
           posts
         </p>
 
         <div className={styles.grid}>
           {posts.map((post) => (
-            <a data-test={`post-${post.id}`} className={styles.card} href={`/posts/${post.id}`} key={post.id}>
+            <a
+              data-test={`post-${post.id}`}
+              className={styles.card}
+              href={`/posts/${post.id}`}
+              key={post.id}
+            >
               <h3>{post.title}</h3>
               <p>{post.content}</p>
             </a>
@@ -76,18 +85,12 @@ export default function Home({ posts = [] }) {
               <form onSubmit={handleCreatePost}>
                 <fieldset>
                   <legend>Title</legend>
-                  <input
-                    defaultValue={`Today, ${new Date().toLocaleTimeString()}`}
-                    name="title"
-                  />
+                  <input defaultValue={`Today, ${new Date().toLocaleTimeString()}`} name="title" />
                 </fieldset>
 
                 <fieldset>
                   <legend>Content</legend>
-                  <textarea
-                    defaultValue="I built an Amplify app with Next.js!"
-                    name="content"
-                  />
+                  <textarea defaultValue="I built an Amplify app with Next.js!" name="content" />
                 </fieldset>
 
                 <button>Create Post</button>

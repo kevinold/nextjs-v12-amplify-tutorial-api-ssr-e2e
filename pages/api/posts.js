@@ -1,11 +1,12 @@
-import { Amplify, API } from "aws-amplify";
+import { Amplify, Analytics, API } from "aws-amplify";
 import awsExports from "../../src/aws-exports";
-import { listPosts } from '../../src/graphql/queries';
+import { listPosts } from "../../src/graphql/queries";
 
 Amplify.configure({ ...awsExports, ssr: true });
 
 export default function handler(req, res) {
+  Analytics.record({ name: "apiPostsReq" });
   API.graphql({ query: listPosts }).then(({ data }) => {
-    res.status(200).json({ posts: data.listPosts.items })
+    res.status(200).json({ posts: data.listPosts.items });
   });
 }
