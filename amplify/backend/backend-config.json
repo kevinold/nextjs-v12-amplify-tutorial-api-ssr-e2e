@@ -58,20 +58,6 @@
           ]
         }
       }
-    },
-    "UsersApi": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "nextjsv12amplifytutoba3daec5",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ]
     }
   },
   "analytics": {
