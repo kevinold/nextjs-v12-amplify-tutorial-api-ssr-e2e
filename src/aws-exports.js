@@ -28,8 +28,22 @@ const awsmobile = {
     "aws_appsync_region": "us-west-2",
     "aws_appsync_authenticationType": "API_KEY",
     "aws_appsync_apiKey": "da2-i2isndl3ovhg7jtejtuqbuubma",
+    "aws_cloud_logic_custom": [
+        {
+            "name": "UsersApi",
+            "endpoint": "https://pmrjl6zyua.execute-api.us-west-2.amazonaws.com/dev",
+            "region": "us-west-2"
+        }
+    ],
     "aws_mobile_analytics_app_id": "54faa78d5aa647f4949cf6c452a1ae63",
-    "aws_mobile_analytics_app_region": "us-west-2"
+    "aws_mobile_analytics_app_region": "us-west-2",
+    "aws_dynamodb_all_tables_region": "us-west-2",
+    "aws_dynamodb_table_schemas": [
+        {
+            "tableName": "users-dev",
+            "region": "us-west-2"
+        }
+    ]
 };
 
 

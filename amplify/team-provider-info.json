@@ -9,11 +9,18 @@
       "UnauthRoleName": "amplify-nextjsv12amplifytuto-dev-85011-unauthRole",
       "StackName": "amplify-nextjsv12amplifytuto-dev-85011",
       "StackId": "arn:aws:cloudformation:us-west-2:074128318641:stack/amplify-nextjsv12amplifytuto-dev-85011/0ac4a540-0db3-11ed-ad8c-029302451677",
-      "AmplifyAppId": "d1iwx0wa16gls4"
+      "AmplifyAppId": "d1iwx0wa16gls4",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-nextjsv12amplifytuto-dev-85011-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
         "nextjsv12amplifytutoedc7f852": {}
+      },
+      "function": {
+        "nextjsv12amplifytutoba3daec5": {
+          "deploymentBucketName": "amplify-nextjsv12amplifytuto-dev-85011-deployment",
+          "s3Key": "amplify-builds/nextjsv12amplifytutoba3daec5-565835303061667a7439-build.zip"
+        }
       }
     }
   }
