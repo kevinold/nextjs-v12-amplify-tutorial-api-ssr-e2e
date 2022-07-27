@@ -23,23 +23,5 @@ export type AmplifyDependentResourcesAttributes = {
             "Id": "string",
             "appName": "string"
         }
-    },
-    "storage": {
-        "users": {
-            "Name": "string",
-            "Arn": "string",
-            "StreamArn": "string",
-            "PartitionKeyName": "string",
-            "PartitionKeyType": "string",
-            "Region": "string"
-        }
-    },
-    "function": {
-        "nextjsv12amplifytutoba3daec5": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        }
     }
 }

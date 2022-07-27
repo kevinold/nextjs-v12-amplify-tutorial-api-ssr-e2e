@@ -15,12 +15,6 @@
     "categories": {
       "auth": {
         "nextjsv12amplifytutoedc7f852": {}
-      },
-      "function": {
-        "nextjsv12amplifytutoba3daec5": {
-          "deploymentBucketName": "amplify-nextjsv12amplifytuto-dev-85011-deployment",
-          "s3Key": "amplify-builds/nextjsv12amplifytutoba3daec5-565835303061667a7439-build.zip"
-        }
       }
     }
   }
