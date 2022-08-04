@@ -20,6 +20,11 @@ export type AmplifyDependentResourcesAttributes = {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"
+        },
+        "helloApi": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
         }
     },
     "analytics": {
@@ -41,6 +46,12 @@ export type AmplifyDependentResourcesAttributes = {
     },
     "function": {
         "usersapi": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        },
+        "helloLambda": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",

@@ -20,6 +20,10 @@
         "usersapi": {
           "deploymentBucketName": "amplify-nextjsv12amplifytuto-dev-85011-deployment",
           "s3Key": "amplify-builds/usersapi-376c2f64305842574833-build.zip"
+        },
+        "helloLambda": {
+          "deploymentBucketName": "amplify-nextjsv12amplifytuto-dev-85011-deployment",
+          "s3Key": "amplify-builds/helloLambda-4d5a617857384d5a6277-build.zip"
         }
       }
     }

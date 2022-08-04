@@ -72,6 +72,20 @@
           ]
         }
       ]
+    },
+    "helloApi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "helloLambda",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
     }
   },
   "analytics": {
@@ -105,6 +119,11 @@
           }
         }
       ]
+    },
+    "helloLambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   }
 }

@@ -33,6 +33,11 @@ const awsmobile = {
             "name": "UsersApi",
             "endpoint": "https://xqov61eb3b.execute-api.us-west-2.amazonaws.com/dev",
             "region": "us-west-2"
+        },
+        {
+            "name": "helloApi",
+            "endpoint": "https://rz7vmbefpf.execute-api.us-west-2.amazonaws.com/dev",
+            "region": "us-west-2"
         }
     ],
     "aws_mobile_analytics_app_id": "54faa78d5aa647f4949cf6c452a1ae63",
