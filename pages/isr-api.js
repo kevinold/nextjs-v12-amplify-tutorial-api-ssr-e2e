@@ -1,20 +1,21 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-const POSTS_ORIGIN = process.env.AWS_APP_ID
-  ? `https://${process.env.AWS_BRANCH}.${process.env.AWS_APP_ID}.amplifyapp.com`
-  : "http://localhost:3000";
+import { Amplify, API } from "aws-amplify";
+import awsExports from "../src/aws-exports";
+import { listPosts } from "../src/graphql/queries";
+
+Amplify.configure({ ...awsExports, ssr: true });
 
 export async function getStaticProps() {
-  const res = await fetch(`${POSTS_ORIGIN}/api/posts`);
-  const { posts } = await res.json();
+  const res = await API.graphql({ query: listPosts });
 
   return {
     props: {
       time: new Date().toISOString(),
-      posts,
+      posts: res.data.listPosts.items,
     },
-    revalidate: 60,
+    revalidate: 10,
   };
 }
 
