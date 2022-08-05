@@ -16,6 +16,10 @@ export default function StaticPage() {
       setCurrentUser(user);
     });
 
+    Auth.currentSession()
+      .then((currentSession) => console.log({ currentSession }))
+      .catch((err) => console.log(err));
+
     recordAnalytics().catch(console.error);
   }, []);
   return (
