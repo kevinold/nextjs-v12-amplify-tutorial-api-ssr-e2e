@@ -3,6 +3,7 @@ import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import { Amplify, Analytics, API, Auth, withSSRContext } from "aws-amplify";
 import Head from "next/head";
+import React from "react";
 import awsExports from "../src/aws-exports";
 import { createPost } from "../src/graphql/mutations";
 import { listPosts } from "../src/graphql/queries";
@@ -14,9 +15,17 @@ export async function getServerSideProps({ req }) {
   const SSR = withSSRContext({ req });
   const response = await SSR.API.graphql({ query: listPosts });
 
+  let user = null;
+
+  try {
+    user = await SSR.Auth.currentAuthenticatedUser();
+    console.log(user);
+  } catch (e) {}
+
   return {
     props: {
       posts: response.data.listPosts.items,
+      user: user.attributes,
     },
   };
 }
@@ -47,7 +56,7 @@ async function handleCreatePost(event) {
   }
 }
 
-export default function Home({ posts = [] }) {
+export default function Home({ posts = [], user }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -98,6 +107,9 @@ export default function Home({ posts = [] }) {
                   Sign out
                 </button>
               </form>
+              <code>
+                <pre>{JSON.stringify(user, null, 2)}</pre>
+              </code>
             </Authenticator>
           </div>
         </div>
