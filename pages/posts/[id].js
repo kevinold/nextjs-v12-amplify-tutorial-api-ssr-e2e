@@ -1,4 +1,4 @@
-import { Amplify, Analytics, API, withSSRContext } from "aws-amplify";
+import { Amplify, Analytics, API } from "aws-amplify";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -7,11 +7,10 @@ import { deletePost } from "../../src/graphql/mutations";
 import { getPost, listPosts } from "../../src/graphql/queries";
 import styles from "../../styles/Home.module.css";
 
-Amplify.configure({ ...awsExports, ssr: true });
+Amplify.configure({ ...awsExports });
 
 export async function getStaticPaths() {
-  const SSR = withSSRContext();
-  const { data } = await SSR.API.graphql({ query: listPosts });
+  const { data } = await API.graphql({ query: listPosts });
   const paths = data.listPosts.items.map((post) => ({
     params: { id: post.id },
   }));
@@ -23,8 +22,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const SSR = withSSRContext();
-  const { data } = await SSR.API.graphql({
+  const { data } = await API.graphql({
     query: getPost,
     variables: {
       id: params.id,
