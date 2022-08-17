@@ -25,7 +25,7 @@ export async function getServerSideProps({ req }) {
   return {
     props: {
       posts: response.data.listPosts.items,
-      user: user.attributes,
+      user: user,
     },
   };
 }
