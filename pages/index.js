@@ -49,7 +49,7 @@ async function handleCreatePost(event) {
 
     await Analytics.record({ name: "createPost" });
 
-    window.location.href = `/posts/${data.createPost.id}`;
+    // window.location.href = `/posts/${data.createPost.id}`;
   } catch ({ errors }) {
     console.error(...errors);
     throw new Error(errors[0].message);
