@@ -1,16 +1,16 @@
 {
-  "dev": {
+  "sampledev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-nextjsv12amplifytuto-dev-85011-authRole",
-      "UnauthRoleArn": "arn:aws:iam::074128318641:role/amplify-nextjsv12amplifytuto-dev-85011-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::074128318641:role/amplify-nextjsv12amplifytuto-dev-85011-authRole",
-      "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-nextjsv12amplifytuto-dev-85011-deployment",
-      "UnauthRoleName": "amplify-nextjsv12amplifytuto-dev-85011-unauthRole",
-      "StackName": "amplify-nextjsv12amplifytuto-dev-85011",
-      "StackId": "arn:aws:cloudformation:us-west-2:074128318641:stack/amplify-nextjsv12amplifytuto-dev-85011/0ac4a540-0db3-11ed-ad8c-029302451677",
-      "AmplifyAppId": "d1iwx0wa16gls4",
-      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-nextjsv12amplifytuto-dev-85011-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+      "AuthRoleName": "amplify-nextjsv12amplifytuto-sampledev-122604-authRole",
+      "UnauthRoleArn": "arn:aws:iam::074128318641:role/amplify-nextjsv12amplifytuto-sampledev-122604-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::074128318641:role/amplify-nextjsv12amplifytuto-sampledev-122604-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-nextjsv12amplifytuto-sampledev-122604-deployment",
+      "UnauthRoleName": "amplify-nextjsv12amplifytuto-sampledev-122604-unauthRole",
+      "StackName": "amplify-nextjsv12amplifytuto-sampledev-122604",
+      "StackId": "arn:aws:cloudformation:us-east-1:074128318641:stack/amplify-nextjsv12amplifytuto-sampledev-122604/81683e50-223f-11ed-9644-0ec560cea32b",
+      "AmplifyAppId": "d36uq1p4kemwc0",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-nextjsv12amplifytuto-sampledev-122604-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
@@ -18,11 +18,11 @@
       },
       "function": {
         "usersapi": {
-          "deploymentBucketName": "amplify-nextjsv12amplifytuto-dev-85011-deployment",
+          "deploymentBucketName": "amplify-nextjsv12amplifytuto-sampledev-122604-deployment",
           "s3Key": "amplify-builds/usersapi-376c2f64305842574833-build.zip"
         },
         "helloLambda": {
-          "deploymentBucketName": "amplify-nextjsv12amplifytuto-dev-85011-deployment",
+          "deploymentBucketName": "amplify-nextjsv12amplifytuto-sampledev-122604-deployment",
           "s3Key": "amplify-builds/helloLambda-4d5a617857384d5a6277-build.zip"
         }
       }
