@@ -38,7 +38,7 @@ test:
         - npm install wait-on
         - npm install pm2
         - npm install mocha mochawesome mochawesome-merge mochawesome-report-generator
-        - npm run test:provisionCognitoUsers
+        #- npm run test:provisionCognitoUsers
         - npm run build
         - npx pm2 start npm -- start
         - 'npx wait-on --timeout 60 http://localhost:3000'
